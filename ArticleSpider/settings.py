@@ -69,8 +69,17 @@ ITEM_PIPELINES = {
 
     # See '/Users/nifall/anaconda3/envs/py36/lib/python3.6/site-packages/scrapy/pipelines/images.py'
     # for image downloading
-    'scrapy.pipelines.images.ImagesPipeline': 1,
+    # 'scrapy.pipelines.images.ImagesPipeline': 1,
+    'ArticleSpider.pipelines.ArticleImagePipeline': 1,
+
 }
+
+# assign the imageUrl field in Item class
+IMAGES_URLS_FIELD = "coverImgUrl"
+
+import os
+projDir = os.path.abspath(os.path.dirname(__file__))
+IMAGES_STORE = os.path.join(projDir, 'images')
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html

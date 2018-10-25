@@ -6,6 +6,8 @@
 from scrapy.cmdline import execute
 import sys
 import os
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 # add current folder into sysPath. so that project can be called from terminal.
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))

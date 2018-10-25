@@ -2,10 +2,10 @@
 import scrapy
 import re
 from scrapy.http import Request
-from urllib import parse
+import urlparse
 
 from ArticleSpider.items import JobboleArticleItem
-
+from ArticleSpider.utils.common import get_md5
 
 class JobboleSpider(scrapy.Spider):
     name = 'jobbole'
@@ -27,7 +27,7 @@ class JobboleSpider(scrapy.Spider):
             # (Assume the coverPicture for each article can only be seen on the overview page (not the detailed page), then we need get the picture and pass into parse_detail, using "meta")
             imgSrc = detailNode.css("img::attr(src)").extract_first()
             detailUrl = detailNode.css("::attr(href)").extract_first()
-            yield Request(parse.urljoin(response.url, detailUrl), meta={"coverImg": imgSrc}, callback=self.parse_detail)
+            yield Request(urlparse.urljoin(response.url, detailUrl), meta={"coverImg": imgSrc}, callback=self.parse_detail)
 
         # Find next overview page, make request and call self (parse()) again.
         # .extract_first(defaultValue) return defaultValue if no ele in extracted list; or return the first ele in list
@@ -85,24 +85,16 @@ class JobboleSpider(scrapy.Spider):
         item["date"] = date
         item["url"] = response.url
         # item["urlObjId"]
-        item["coverImgUrl"] = coverImg
+        # item[url] would be processed as a list in "pipelines"
+        item["coverImgUrl"] = [coverImg]
         item["thumbUp"] = thumbUp
         item["favNum"] = favNum
         item["commentNum"] = commentNum
         item["tags"] = tags
         item["content"] = content
+        item["urlObjId"] = get_md5(response.url)
 
         #yield send item to pipeline if "settings" enable pipleline
         yield item
 
-        # title = scrapy.Field()
-        # date = scrapy.Field()
-        # url = scrapy.Field()
-        # urlObjId = scrapy.Field()
-        # coverImgUrl = scrapy.Field()
-        # thumbUp = scrapy.Field()
-        # favNum = scrapy.Field()
-        # commentNum = scrapy.Field()
-        # tags = scrapy.Field()
-        # content = scrapy.Field()
         pass
