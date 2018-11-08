@@ -18,7 +18,7 @@ NEWSPIDER_MODULE = 'ArticleSpider.spiders'
 # USER_AGENT = 'ArticleSpider (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = False
+ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 # CONCURRENT_REQUESTS = 32
@@ -71,6 +71,7 @@ ITEM_PIPELINES = {
     # for image downloading
     # 'scrapy.pipelines.images.ImagesPipeline': 1,
     'ArticleSpider.pipelines.ArticleImagePipeline': 1,
+    'ArticleSpider.pipelines.MySqlPipeline': 2,
 
 }
 

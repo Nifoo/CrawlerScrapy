@@ -3,6 +3,7 @@ import scrapy
 import re
 from scrapy.http import Request
 import urlparse
+import datetime
 
 from ArticleSpider.items import JobboleArticleItem
 from ArticleSpider.utils.common import get_md5
@@ -82,7 +83,11 @@ class JobboleSpider(scrapy.Spider):
 
         item = JobboleArticleItem()
         item["title"] = title
-        item["date"] = date
+        try:
+            create_date = datetime.datetime.strptime(date, "%Y/%m/%d").date()
+        except Exception as e:
+            create_date = datetime.datetime.now().date()
+        item["date"] = create_date
         item["url"] = response.url
         # item["urlObjId"]
         # item[url] would be processed as a list in "pipelines"

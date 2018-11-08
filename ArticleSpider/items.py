@@ -20,7 +20,7 @@ class JobboleArticleItem(scrapy.Item):
     url = scrapy.Field()
     urlObjId = scrapy.Field()
     coverImgUrl = scrapy.Field()
-    coverImagFilePath = scrapy.Field()
+    coverImgFilePath = scrapy.Field()
     thumbUp = scrapy.Field()
     favNum = scrapy.Field()
     commentNum = scrapy.Field()
