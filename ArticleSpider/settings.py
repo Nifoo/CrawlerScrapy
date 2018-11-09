@@ -71,7 +71,8 @@ ITEM_PIPELINES = {
     # for image downloading
     # 'scrapy.pipelines.images.ImagesPipeline': 1,
     'ArticleSpider.pipelines.ArticleImagePipeline': 1,
-    'ArticleSpider.pipelines.MySqlPipeline': 2,
+    # 'ArticleSpider.pipelines.MySqlPipeline': 2,
+    'ArticleSpider.pipelines.MySqlTwistedPipeline': 2,
 
 }
 
@@ -102,3 +103,8 @@ IMAGES_STORE = os.path.join(projDir, 'images')
 # HTTPCACHE_DIR = 'httpcache'
 # HTTPCACHE_IGNORE_HTTP_CODES = []
 # HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+MYSQL_HOST = "127.0.0.1"
+MYSQL_DBNAME = "crawler"
+MYSQL_USER = "root"
+MYSQL_PASSWORD = "19920105hp"
