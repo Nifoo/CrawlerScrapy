@@ -18,7 +18,7 @@ NEWSPIDER_MODULE = 'ArticleSpider.spiders'
 # USER_AGENT = 'ArticleSpider (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 # CONCURRENT_REQUESTS = 32
@@ -77,7 +77,9 @@ ITEM_PIPELINES = {
 }
 
 # assign the imageUrl field in Item class
-IMAGES_URLS_FIELD = "coverImgUrl"
+# IMAGES_URLS_FIELD = "coverImgUrl"  # for jobbole
+
+IMAGES_URLS_FIELD = "photo_url"
 
 import os
 projDir = os.path.abspath(os.path.dirname(__file__))

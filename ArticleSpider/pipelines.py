@@ -20,7 +20,11 @@ class ArticleImagePipeline(ImagesPipeline):
     def item_completed(self, results, item, info):
         for succ, value in results:
             image_file_path = value["path"]
-        item["coverImgFilePath"] = image_file_path
+
+        # for jobbole
+        # item["coverImgFilePath"] = image_file_path
+
+        item[item.get_img_path()] = image_file_path
         return item
 
 
@@ -78,11 +82,7 @@ class MySqlTwistedPipeline(object):
         print(failure)
 
     def do_insert(self, cursor, item):
-        insert_sql = '''            
-                    insert into article_jobbole(title, url, url_obj_id, cover_img_url, cover_img_file_path, thumb_up, 
-                    fav_num, comment_num, tags, content, create_date) 
-                    values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-                '''
-        cursor.execute(insert_sql, (item['title'], item['url'], item['urlObjId'], item['coverImgUrl'],
-                                    item['coverImgFilePath'], item['thumbUp'], item['favNum'], item['commentNum'],
-                                    item['tags'], item['content'], item['date']))
+        insert_sql, params = item.get_insert_sql()
+        cursor.execute(insert_sql, params)
+        insert_sql2, params2 = item.get_insert_sql2()
+        cursor.execute(insert_sql2, params2)

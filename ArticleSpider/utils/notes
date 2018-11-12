@@ -1,0 +1,431 @@
+for mp in tar_data_jsn:
+    if "firstName" in mp:
+        item["firstName"] = mp["firstName"]
+        item["lastName"] = mp["lastName"]
+    if "locationName" in mp:
+        item["locationName"] = mp["locationName"]
+    if "picture" in mp:
+        item["photo_url"] = html_parser.unescape(
+            mp["picture"]["rootUrl"] + mp["picture"]["artifacts"][3]["fileIdentifyingUrlPathSegment"])
+
+
+to find other users similar:
+
+cookie.get('JSESSIONID')
+headers.put('csrf-token')
+request.get('https://www.linkedin.com/voyager/api/identity/profiles/xue-hang-027041116/browsemapWithDistance')
+
+response:
+{
+    "elements": [
+        {
+            "distance": {
+                "value": "DISTANCE_3"
+            },
+            "miniProfile": {
+                "firstName": "Yina",
+                "lastName": "Wei",
+                "occupation": "Manager-American Express",
+                "objectUrn": "urn:li:member:551655042",
+                "entityUrn": "urn:li:fs_miniProfile:ACoAACDhloIBPtCc5qfJ8xFVat0ad2KnKxih-FU",
+                "publicIdentifier": "yina-wei-9968b8134",
+                "picture": {
+                    "com.linkedin.common.VectorImage": {
+                        "artifacts": [
+                            {
+                                "width": 100,
+                                "fileIdentifyingUrlPathSegment": "100_100/0?e=1547683200&v=beta&t=IjQ8_oWK93n5sUK1qWc0U7IOFwYU12svCpwlKFoc7YU",
+                                "height": 100
+                            },
+                            {
+                                "width": 200,
+                                "fileIdentifyingUrlPathSegment": "200_200/0?e=1547683200&v=beta&t=1WpvUHUCblPyfqGwjWD_Ooz6iHSfQjtbDziMAPEIr10",
+                                "height": 200
+                            },
+                            {
+                                "width": 400,
+                                "fileIdentifyingUrlPathSegment": "400_400/0?e=1547683200&v=beta&t=-acdfi0rtPIt-ExkmkVwqATJaTIS8EkO1ASwNAUqbOs",
+                                "height": 400
+                            },
+                            {
+                                "width": 800,
+                                "fileIdentifyingUrlPathSegment": "800_800/0?e=1547683200&v=beta&t=Evjoxo58Wipd7U56yyY1e4Xkl7Y5n185wBHv4P1wAAs",
+                                "height": 800
+                            }
+                        ],
+                        "rootUrl": "https://media.licdn.com/dms/image/C4D03AQHBlxFTQTO7Fg/profile-displayphoto-shrink_"
+                    }
+                },
+                "trackingId": "qkeKBPHWT5eLxMAofu2IxQ=="
+            }
+        },
+        {
+            "distance": {
+                "value": "DISTANCE_3"
+            },
+            "miniProfile": {
+                "firstName": "Yanan",
+                "lastName": "Qian",
+                "occupation": "Senior Software Engineer at Google",
+                "objectUrn": "urn:li:member:135376164",
+                "entityUrn": "urn:li:fs_miniProfile:ACoAAAgRrSQBnWjEm2OrkGEu4X-15-ibaNEW4j8",
+                "publicIdentifier": "yanan-qian-83040639",
+                "picture": {
+                    "com.linkedin.common.VectorImage": {
+                        "artifacts": [
+                            {
+                                "width": 100,
+                                "fileIdentifyingUrlPathSegment": "100_100/0?e=1547683200&v=beta&t=-leaEjUKdDQBkzdxnHrxN4wHxv_IdoLCGk8gulBonJU",
+                                "height": 100
+                            },
+                            {
+                                "width": 200,
+                                "fileIdentifyingUrlPathSegment": "200_200/0?e=1547683200&v=beta&t=mRZ7eisQfNE3TZfUIBUQu81OyEG5xgxENvc9ZZRm8ek",
+                                "height": 200
+                            },
+                            {
+                                "width": 400,
+                                "fileIdentifyingUrlPathSegment": "400_400/0?e=1547683200&v=beta&t=ry4yfGQSVVIrBR2XZ7RY8TN7oL4yO0UB_eO6YD42Ur8",
+                                "height": 400
+                            },
+                            {
+                                "width": 800,
+                                "fileIdentifyingUrlPathSegment": "800_800/0?e=1547683200&v=beta&t=2YTZ8AAKsT1rrEpIe9S4vKbKdwf0LWwuywtnFya6ajc",
+                                "height": 800
+                            }
+                        ],
+                        "rootUrl": "https://media.licdn.com/dms/image/C5603AQFhJGYVDrc1LA/profile-displayphoto-shrink_"
+                    }
+                },
+                "trackingId": "zktg5PRUTiaD1KF5pWvl3g=="
+            }
+        },
+        {
+            "distance": {
+                "value": "DISTANCE_3"
+            },
+            "miniProfile": {
+                "firstName": "Siyue",
+                "lastName": "Wu",
+                "occupation": "Deep Learning Software Intern at NVIDIA",
+                "objectUrn": "urn:li:member:201916872",
+                "entityUrn": "urn:li:fs_miniProfile:ACoAAAwJAcgBKr4W_5vK9k3xhAB2XuJAW285aWo",
+                "backgroundImage": {
+                    "com.linkedin.common.VectorImage": {
+                        "artifacts": [
+                            {
+                                "width": 800,
+                                "fileIdentifyingUrlPathSegment": "200_800/0?e=1547683200&v=beta&t=4uwsQuUgUsETXic30ui0auWRc1R0jSOWtGU1SiojW5g",
+                                "height": 200
+                            },
+                            {
+                                "width": 1400,
+                                "fileIdentifyingUrlPathSegment": "350_1400/0?e=1547683200&v=beta&t=deA2urUljqUTwoK_mXsxA94yX_L-t4pm3ZDJRjD7_M4",
+                                "height": 350
+                            }
+                        ],
+                        "rootUrl": "https://media.licdn.com/dms/image/C5116AQEphxIoYwD3Aw/profile-displaybackgroundimage-shrink_"
+                    }
+                },
+                "publicIdentifier": "siyue-wu",
+                "picture": {
+                    "com.linkedin.common.VectorImage": {
+                        "artifacts": [
+                            {
+                                "width": 100,
+                                "fileIdentifyingUrlPathSegment": "100_100/0?e=1547683200&v=beta&t=0r0VPd6QJ6sp0rgw_oeZewBiTBSiTgZzjN9b-rvpPdc",
+                                "height": 100
+                            },
+                            {
+                                "width": 200,
+                                "fileIdentifyingUrlPathSegment": "200_200/0?e=1547683200&v=beta&t=jDvLTxCgkEAxMFgJM4yBmUWJbOEWWetlGS5mMVP8pW4",
+                                "height": 200
+                            },
+                            {
+                                "width": 400,
+                                "fileIdentifyingUrlPathSegment": "400_400/0?e=1547683200&v=beta&t=7wbMQLopUX3dV2IZKebHeowxMYNahe40K_ms5gJyBo0",
+                                "height": 400
+                            },
+                            {
+                                "width": 800,
+                                "fileIdentifyingUrlPathSegment": "800_800/0?e=1547683200&v=beta&t=550sQlxkJdzprq_EB0LbxIFM84ssx-D1vTenYyNicrU",
+                                "height": 800
+                            }
+                        ],
+                        "rootUrl": "https://media.licdn.com/dms/image/C5103AQEvIOE428ULAQ/profile-displayphoto-shrink_"
+                    }
+                },
+                "trackingId": "lsWswY18RA+WQUhpu1T60Q=="
+            }
+        },
+        {
+            "distance": {
+                "value": "DISTANCE_3"
+            },
+            "miniProfile": {
+                "firstName": "Tongxu",
+                "lastName": "Yang",
+                "occupation": "Software Engineer at Google",
+                "objectUrn": "urn:li:member:337753335",
+                "entityUrn": "urn:li:fs_miniProfile:ACoAABQhtPcBolwCWs1yPNh8PoVYHpPTvV3SIpU",
+                "publicIdentifier": "tongxu-yang-13314395",
+                "picture": {
+                    "com.linkedin.common.VectorImage": {
+                        "artifacts": [
+                            {
+                                "width": 100,
+                                "fileIdentifyingUrlPathSegment": "100_100/0?e=1547683200&v=beta&t=DWqjJYR_vGDj8jXtl8geSRM12mr-dsKR1oc0Hq8fISY",
+                                "height": 100
+                            },
+                            {
+                                "width": 200,
+                                "fileIdentifyingUrlPathSegment": "200_200/0?e=1547683200&v=beta&t=sj10yLihWvOIo3YtMH9eb2dhnu-Uj-56wG44IbLuvsM",
+                                "height": 200
+                            },
+                            {
+                                "width": 400,
+                                "fileIdentifyingUrlPathSegment": "400_400/0?e=1547683200&v=beta&t=NU4f9VMjcYF-moiM243vwQD2sGv5Ldsrk1f5E3ycLVo",
+                                "height": 400
+                            },
+                            {
+                                "width": 800,
+                                "fileIdentifyingUrlPathSegment": "800_800/0?e=1547683200&v=beta&t=PrDqWOmfxYH366PNMdYnL0q-eT6a_rooHSQRd0VqfOo",
+                                "height": 800
+                            }
+                        ],
+                        "rootUrl": "https://media.licdn.com/dms/image/C4E03AQEMLPvNbBGcWg/profile-displayphoto-shrink_"
+                    }
+                },
+                "trackingId": "xifFlQL6S3OP6P+yEGBmmw=="
+            }
+        },
+        {
+            "distance": {
+                "value": "DISTANCE_3"
+            },
+            "miniProfile": {
+                "firstName": "Grace",
+                "lastName": "Zhang",
+                "occupation": "Software Engineer at Google",
+                "objectUrn": "urn:li:member:232339398",
+                "entityUrn": "urn:li:fs_miniProfile:ACoAAA3ZN8YB4dxS_bvtWh4m_sAd8Bb_IBaf1oU",
+                "backgroundImage": {
+                    "string": "https://static.licdn.com/scds/common/u/images/apps/profile/topcard_backgrounds/texture_blue_checks_1400x425.jpg"
+                },
+                "publicIdentifier": "gracezhang612",
+                "picture": {
+                    "com.linkedin.common.VectorImage": {
+                        "artifacts": [
+                            {
+                                "width": 100,
+                                "fileIdentifyingUrlPathSegment": "100_100/0?e=1547683200&v=beta&t=xs-FjDFy4aTfuJOlqLP9XoQrOOr5f7Nt16nsjUWDJkM",
+                                "height": 100
+                            },
+                            {
+                                "width": 200,
+                                "fileIdentifyingUrlPathSegment": "200_200/0?e=1547683200&v=beta&t=Gem8C-xNsVYTLPJoZ7uCQyR2urFzk-zrUEBEHGJRq6A",
+                                "height": 200
+                            },
+                            {
+                                "width": 400,
+                                "fileIdentifyingUrlPathSegment": "400_400/0?e=1547683200&v=beta&t=231zaD0oe1b1SAcMIRwhcPh-GkFtzkbHP6Nz9rddqB8",
+                                "height": 400
+                            },
+                            {
+                                "width": 800,
+                                "fileIdentifyingUrlPathSegment": "800_800/0?e=1547683200&v=beta&t=BYOK2pm5bbt8UvEYuJgpsUVaIZWFZVJmUPTYMv7lFJ8",
+                                "height": 800
+                            }
+                        ],
+                        "rootUrl": "https://media.licdn.com/dms/image/C5603AQEJd9yRoV7zuQ/profile-displayphoto-shrink_"
+                    }
+                },
+                "trackingId": "cW6804zWRE2WfFdvChlDTw=="
+            }
+        },
+        {
+            "distance": {
+                "value": "OUT_OF_NETWORK"
+            },
+            "miniProfile": {
+                "firstName": "xinying",
+                "lastName": "du",
+                "occupation": "Student at University of Southern California",
+                "objectUrn": "urn:li:member:462167639",
+                "entityUrn": "urn:li:fs_miniProfile:ACoAABuMHlcBuhy2aKWwGxaojsUQhkKjYcBgGp8",
+                "publicIdentifier": "xinying-du-15b94210a",
+                "picture": {
+                    "com.linkedin.common.VectorImage": {
+                        "artifacts": [
+                            {
+                                "width": 100,
+                                "fileIdentifyingUrlPathSegment": "100_100/0?e=1547683200&v=beta&t=c6TWJk0yYGVvIdoGPLYCOX20m-Nun8wzNRTXAFB7gEs",
+                                "height": 100
+                            },
+                            {
+                                "width": 200,
+                                "fileIdentifyingUrlPathSegment": "200_200/0?e=1547683200&v=beta&t=Nyu08pjnPDOxyD0MZKdCQQXkp_SmC7Tyt02lXnb5nPg",
+                                "height": 200
+                            },
+                            {
+                                "width": 400,
+                                "fileIdentifyingUrlPathSegment": "400_400/0?e=1547683200&v=beta&t=kY00StGC14O_JBiN1rDBp0AuL1dJpLgE2uVF3J4e3d0",
+                                "height": 400
+                            },
+                            {
+                                "width": 800,
+                                "fileIdentifyingUrlPathSegment": "800_800/0?e=1547683200&v=beta&t=SjFrFlWost4oFPN-y6YzI8UVgyXAWyT4-mM_pNZKDnA",
+                                "height": 800
+                            }
+                        ],
+                        "rootUrl": "https://media.licdn.com/dms/image/C5603AQGJIDstENnslA/profile-displayphoto-shrink_"
+                    }
+                },
+                "trackingId": "Kf+yZeF3QpOo6jCMVtfvJw=="
+            }
+        },
+        {
+            "distance": {
+                "value": "DISTANCE_3"
+            },
+            "miniProfile": {
+                "firstName": "Summer",
+                "lastName": "Wang",
+                "occupation": "Senior Data Scientist at Netflix",
+                "objectUrn": "urn:li:member:221307549",
+                "entityUrn": "urn:li:fs_miniProfile:ACoAAA0w4p0Bbku5XtlIWjeQLqMnGPSa2NBcwTA",
+                "publicIdentifier": "xiaoshuowang",
+                "picture": {
+                    "com.linkedin.common.VectorImage": {
+                        "artifacts": [
+                            {
+                                "width": 100,
+                                "fileIdentifyingUrlPathSegment": "100_100/0?e=1547683200&v=beta&t=hi1FG2hMk3BLCktXTqXGjZudbZCC1ZzDcCglBSF_8wc",
+                                "height": 100
+                            },
+                            {
+                                "width": 200,
+                                "fileIdentifyingUrlPathSegment": "200_200/0?e=1547683200&v=beta&t=7pjfne_fDGeMRaV0Ekww7GKtWJrHbR_-8Yp3J2zM-5o",
+                                "height": 200
+                            },
+                            {
+                                "width": 400,
+                                "fileIdentifyingUrlPathSegment": "400_400/0?e=1547683200&v=beta&t=GaC3Pv6oU1mAzKSabv64195X3XQbFmBETgVT83OQJ7A",
+                                "height": 400
+                            },
+                            {
+                                "width": 800,
+                                "fileIdentifyingUrlPathSegment": "800_800/0?e=1547683200&v=beta&t=pzFZICDVlWfHC1_kc2xAy2APDJqU9pf6TnP09Ji00gg",
+                                "height": 800
+                            }
+                        ],
+                        "rootUrl": "https://media.licdn.com/dms/image/C5603AQG6tY2Xe9ji5w/profile-displayphoto-shrink_"
+                    }
+                },
+                "trackingId": "WoUYBSQwQ2aqbrmLCnrPLA=="
+            }
+        },
+        {
+            "distance": {
+                "value": "OUT_OF_NETWORK"
+            },
+            "miniProfile": {
+                "firstName": "Wenjun",
+                "lastName": "Gao",
+                "occupation": "Software Engineer at Google",
+                "objectUrn": "urn:li:member:333508525",
+                "entityUrn": "urn:li:fs_miniProfile:ACoAABPg760BCGDhcvb6z3Lu_hfL6DfgDTQOxUI",
+                "publicIdentifier": "wenjun-gao-75183693",
+                "trackingId": "rBs/ytFaSHepO3NDc+XGrQ=="
+            }
+        },
+        {
+            "distance": {
+                "value": "DISTANCE_3"
+            },
+            "miniProfile": {
+                "firstName": "Zumi",
+                "lastName": "Jin",
+                "occupation": "Student at Harvard University",
+                "objectUrn": "urn:li:member:126319616",
+                "entityUrn": "urn:li:fs_miniProfile:ACoAAAeHfAABWqeLnbR3FIRhtQLUPbEIEc4MShw",
+                "publicIdentifier": "zumi-jin",
+                "picture": {
+                    "com.linkedin.common.VectorImage": {
+                        "artifacts": [
+                            {
+                                "width": 100,
+                                "fileIdentifyingUrlPathSegment": "100_100/0?e=1547683200&v=beta&t=0ivY4lUQQjwpNyY1g7JQQhkj-JLJg7qpZIrYRJ4Gr6U",
+                                "height": 100
+                            },
+                            {
+                                "width": 200,
+                                "fileIdentifyingUrlPathSegment": "200_200/0?e=1547683200&v=beta&t=3Wrj_JXzmGvVQGgmXwqPA6AFgh79pHJcYpavMjQRFJU",
+                                "height": 200
+                            },
+                            {
+                                "width": 400,
+                                "fileIdentifyingUrlPathSegment": "400_400/0?e=1547683200&v=beta&t=IufzBF6IPZjvGNcSF1HV1CkLKkOxwPJ7hwzVaZEp_ik",
+                                "height": 400
+                            },
+                            {
+                                "width": 800,
+                                "fileIdentifyingUrlPathSegment": "800_800/0?e=1547683200&v=beta&t=-tJ08w2lye8jbGF_Idn5afzMO5C09F0qUkX55YIVoSI",
+                                "height": 800
+                            }
+                        ],
+                        "rootUrl": "https://media.licdn.com/dms/image/C4D03AQEvtquK4HtnIg/profile-displayphoto-shrink_"
+                    }
+                },
+                "trackingId": "G4KLBplITr28EXl1Ca2uQQ=="
+            }
+        },
+        {
+            "distance": {
+                "value": "DISTANCE_3"
+            },
+            "miniProfile": {
+                "firstName": "Yingxue",
+                "lastName": "MEI",
+                "occupation": "Software Engineer III at Google",
+                "objectUrn": "urn:li:member:125116734",
+                "entityUrn": "urn:li:fs_miniProfile:ACoAAAd1IT4BfdrsgczXDcrY8SJX5TMSqQ5ByR4",
+                "publicIdentifier": "aliceyxmei",
+                "picture": {
+                    "com.linkedin.common.VectorImage": {
+                        "artifacts": [
+                            {
+                                "width": 100,
+                                "fileIdentifyingUrlPathSegment": "100_100/0?e=1547683200&v=beta&t=-Zu3ycRHw-4uTrOFtPbtcKoKMdsEXWiTmUFgKet_kCE",
+                                "height": 100
+                            },
+                            {
+                                "width": 200,
+                                "fileIdentifyingUrlPathSegment": "200_200/0?e=1547683200&v=beta&t=8S0XGcbNucQwV88baRz0mbawaN0XlQISa9H508FcObc",
+                                "height": 200
+                            },
+                            {
+                                "width": 400,
+                                "fileIdentifyingUrlPathSegment": "400_400/0?e=1547683200&v=beta&t=Q8-hz51ztkrHu5Q6socXqIFDHVdbISVk5DIkaGUSQEE",
+                                "height": 400
+                            },
+                            {
+                                "width": 800,
+                                "fileIdentifyingUrlPathSegment": "800_800/0?e=1547683200&v=beta&t=X2sLCbyW0_1b--wKI92LaaMhBiunwJ-9ziMWqmA6vpc",
+                                "height": 800
+                            }
+                        ],
+                        "rootUrl": "https://media.licdn.com/dms/image/C5603AQHVtVkoiHH6tg/profile-displayphoto-shrink_"
+                    }
+                },
+                "trackingId": "VXpt/vn3Q86BN8zq+TTsaA=="
+            }
+        }
+    ],
+    "paging": {
+        "total": 15,
+        "count": 10,
+        "start": 0,
+        "links": []
+    }
+}
