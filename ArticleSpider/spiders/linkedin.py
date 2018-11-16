@@ -23,7 +23,7 @@ class LinkedinSpider(scrapy.Spider):
     passwd = cf.get('lk', 'passwd')
 
     login_url = 'https://www.linkedin.com/uas/login-submit?loginSubmitSource=GUEST_HOME'
-    seed_url = 'https://www.linkedin.com/in/xue-hang-027041116/'
+    seed_url = 'https://www.linkedin.com/in/rachel-tao-9a034597/'
     offset = 17
 
     recmd_url_prefix = 'https://www.linkedin.com/voyager/api/identity/profiles/'
