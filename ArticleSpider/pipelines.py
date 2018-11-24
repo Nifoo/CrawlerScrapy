@@ -84,5 +84,16 @@ class MySqlTwistedPipeline(object):
     def do_insert(self, cursor, item):
         insert_sql, params = item.get_insert_sql()
         cursor.execute(insert_sql, params)
-        insert_sql2, params2 = item.get_insert_sql2()
-        cursor.execute(insert_sql2, params2)
+        # insert_sql2, params2 = item.get_insert_sql2()
+        # cursor.execute(insert_sql2, params2)
+
+
+
+class ElasticsearchPipeline(object):
+    #Write data into ES
+
+    def process_item(self, item, spider):
+        #Convert Item to ES data
+        item.save_to_es()
+
+        return item
