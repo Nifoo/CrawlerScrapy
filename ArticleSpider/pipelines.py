@@ -18,6 +18,7 @@ class ArticlespiderPipeline(object):
 class ArticleImagePipeline(ImagesPipeline):
     # many functions can be overriden, see ImagesPipeline
     def item_completed(self, results, item, info):
+        image_file_path = ""
         for succ, value in results:
             image_file_path = value["path"]
 

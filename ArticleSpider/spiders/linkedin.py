@@ -10,7 +10,6 @@ from ArticleSpider.items import LinkedinItem, LinkedinItem
 
 
 class LinkedinSpider(scrapy.Spider):
-
     name = 'linkedin'
     allowed_domains = ['www.linkedin.com']
     start_urls = ['http://www.linkedin.com/']
@@ -23,7 +22,7 @@ class LinkedinSpider(scrapy.Spider):
     passwd = cf.get('lk', 'passwd')
 
     login_url = 'https://www.linkedin.com/uas/login-submit?loginSubmitSource=GUEST_HOME'
-    seed_url = 'https://www.linkedin.com/in/rachel-tao-9a034597/'
+    seed_url = 'https://www.linkedin.com/in/zhou-olivia-02898139/'
     offset = 17
 
     recmd_url_prefix = 'https://www.linkedin.com/voyager/api/identity/profiles/'
@@ -85,7 +84,8 @@ class LinkedinSpider(scrapy.Spider):
         cookie_str = re.match('.*JSESSIONID="(.*?)";.*', cookie[0]).group(1)
         self.headers.update({'csrf-token': cookie_str})
         recmd_url = self.recmd_url_prefix + str(lk_id) + self.recmd_url_postfix
-        yield Request(url=recmd_url, method='GET', headers=self.headers, callback=self.parse_recmd_lst, meta={'parent_id': lk_id})
+        yield Request(url=recmd_url, method='GET', headers=self.headers, dont_filter=True,
+                      callback=self.parse_recmd_lst, meta={'parent_id': lk_id})
         pass
 
     def parse_recmd_lst(self, response):
@@ -104,8 +104,9 @@ class LinkedinSpider(scrapy.Spider):
             item['url'] = ele_url
             item['name'] = prof['firstName'] + prof['lastName']
             item['occupation'] = prof['occupation']
-            photo_obj = prof['picture']["com.linkedin.common.VectorImage"]
-            item['photo_url'] = [photo_obj["rootUrl"] + photo_obj["artifacts"][3]["fileIdentifyingUrlPathSegment"]]
+            if 'picture' in prof:
+                photo_obj = prof['picture']["com.linkedin.common.VectorImage"]
+                item['photo_url'] = [photo_obj["rootUrl"] + photo_obj["artifacts"][3]["fileIdentifyingUrlPathSegment"]]
             yield item
-            yield Request(url=ele_url, method='GET', headers=self.headers, callback=self.parse_profile)
+            yield Request(url=ele_url, method='GET', headers=self.headers, dont_filter=True, callback=self.parse_profile)
         pass

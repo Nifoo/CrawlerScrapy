@@ -112,7 +112,7 @@ class LinkedinItem(scrapy.Item):
     def save_to_es(self):
         lk_person = LkPersonType()
         lk_person.name = self['name']
-        lk_person.id = self['id']
+        # lk_person.id = self['id']
         lk_person.occupation = self['occupation']
         lk_person.url = self['url']
         lk_person.photo_url = self['photo_url']
@@ -124,7 +124,7 @@ class LinkedinItem(scrapy.Item):
         lk_person.suggest = gen_suggests(LkPersonType.Index.name,
                                          ((lk_person.occupation, 10), (lk_person.name, 1)))
 
-        lk_person.save()
+        lk_person.save(using=None, index=None, id=self['id'], validate=True, skip_empty=True)
         return
 
 
@@ -135,8 +135,9 @@ def gen_suggests(index, param):
     for text, weight in param:
         if text:
             # es. analyze
-            words = es.indices.analyze(index=index, body=text, params={'analyzer': "snowball"})
-            analyzed_words = set(r["token"] for r in words["tokens"] if len(r["token"]) > 1)
+            words = es.indices.analyze(index=index, body=text, params={'analyzer': "ik_max_word"})
+            # analyzed_words = set(r["token"] for r in words["tokens"] if len(r["token"]) > 1)
+            analyzed_words = set(r["token"] for r in words["tokens"])
             new_words = analyzed_words - used_words
         else:
             new_words = set()

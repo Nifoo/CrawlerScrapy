@@ -5,12 +5,12 @@ connections.create_connection(hosts=["localhost"])
 
 
 class LkPersonType(Document):
-    suggest = Completion(analyzer="snowball")
-    id = Keyword()
-    parent_id = Keyword()
+    suggest = Completion(analyzer="ik_max_word")
+    # id = Keyword()
+    # parent_id = Keyword()
     url = Keyword()
     name = Keyword()
-    occupation = Text(analyzer="snowball")
+    occupation = Text(analyzer="ik_max_word")
     # location = scrapy.Field()
     photo_url = Keyword()
     photo_path = Keyword()
@@ -20,9 +20,10 @@ class LkPersonType(Document):
     class Index:
         name = "lnkn"
         settings = {
-            "number_of_shards": 5,
-            "number_of_replicas": 1,
+            "number_of_shards": 1,
+            "number_of_replicas": 0,
         }
+
 
 
 if __name__ == "__main__":
