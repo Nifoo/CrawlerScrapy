@@ -77,9 +77,13 @@ class LinkedinItem(scrapy.Item):
     url = scrapy.Field()
     name = scrapy.Field()
     occupation = scrapy.Field()
-    # location = scrapy.Field()
+    location = scrapy.Field()
     photo_url = scrapy.Field()
     photo_path = scrapy.Field()
+    summary = scrapy.Field()
+    company_exp = scrapy.Field()
+    company_jobexp = scrapy.Field()
+    school_exp = scrapy.Field()
 
     # # List of Dict [{'companyName':, 'title':, 'startDate':, 'endDate':, }]
     # experience = scrapy.Field()
@@ -112,17 +116,25 @@ class LinkedinItem(scrapy.Item):
     def save_to_es(self):
         lk_person = LkPersonType()
         lk_person.name = self['name']
-        # lk_person.id = self['id']
         lk_person.occupation = self['occupation']
+        lk_person.location = self['location']
         lk_person.url = self['url']
         lk_person.photo_url = self['photo_url']
         lk_person.photo_path = self['photo_path']
 
+        lk_person.summary = self['summary']
+        lk_person.company_exp = self['company_exp']
+        lk_person.company_jobexp = self['company_jobexp']
+        lk_person.school_exp = self['school_exp']
+
         lk_person.beauty_score = 0
-        lk_person.gender = 'NA'
+        lk_person.gender = ''
 
         lk_person.suggest = gen_suggests(LkPersonType.Index.name,
-                                         ((lk_person.occupation, 10), (lk_person.name, 1)))
+                                         ((lk_person.occupation, 40), (lk_person.location, 4),
+                                          (lk_person.summary, 10), (lk_person.company_exp, 5),
+                                          (lk_person.company_jobexp, 5), (lk_person.school_exp, 2),
+                                          (lk_person.name, 2)))
 
         lk_person.save(using=None, index=None, id=self['id'], validate=True, skip_empty=True)
         return
