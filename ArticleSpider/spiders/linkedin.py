@@ -69,7 +69,7 @@ class LinkedinSpider(scrapy.Spider):
                 tar_jsn = obj_jsn['included']
                 for mp in tar_jsn:
                     if "headline" in mp:
-                        item['location'] = mp.get('locationName', '')
+                        item['location'] = re.sub('<.*?>', '', mp.get('locationName', ''))
                     if "companyName" in mp:
                         start_time = 'NA'
                         end_time = 'NA'
@@ -108,7 +108,6 @@ class LinkedinSpider(scrapy.Spider):
         yield Request(url=recmd_url, method='GET', headers=self.headers, dont_filter=True,
                       callback=self.parse_recmd_lst, meta={'parent_id': lk_id})
         pass
-
 
     def parse_recmd_lst(self, response):
         eles = []
